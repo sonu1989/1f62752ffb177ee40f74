@@ -1,5 +1,4 @@
 <h1>TV Shows</h1>
-
 <%= form_tag(root_path, method: :get) do %>
   <div class="row">
     <div class="col-4">
@@ -20,16 +19,17 @@
   </tr>
   <% @tv_shows.each do |tv_show| %>
     <tr>
-      <th><%= tv_show.channel.name %></th>
-      <th><%= tv_show.name %></th>
-      <th><%= tv_show.timing %></th>
-      <th>
+      <td><%= tv_show.channel.name %></td>
+      <td><%= tv_show.name %></td>
+      <td><%= tv_show.timing %></td>
+      <td>
         <% if tv_show.favorite?(current_user) %>
           <%= link_to 'Remove from Favorite', unfavorite_path(tv_show.id), method: :post %>
         <% else %>
           <%= link_to 'Mark as Favorite', favorite_path(tv_show.id), method: :post %>
         <% end %>
-      </th>
+      </td>
     </tr>
   <% end %>
 </table>
+<%= will_paginate @tv_shows , renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>

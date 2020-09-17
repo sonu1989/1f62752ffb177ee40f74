@@ -1,8 +1,16 @@
 <h1>Favorite Shows</h1>
 
-<table>
+<table class="table">
   <tr>
     <th>Show Name</th>
     <th>Show Time</th>
+    <th>Action</th>
   </tr>
+  <% @favorite_tv_shows.each do |favorite_tv_show| %>
+    <tr>
+      <td><%= favorite_tv_show.tv_show.name %></td>
+      <td><%= favorite_tv_show.tv_show.timing %></td>
+      <td><%= link_to 'Remove from Favorite', unfavorite_path(favorite_tv_show.tv_show.id), method: :post %></td>
+    </tr>
+  <% end %>
 </table>
