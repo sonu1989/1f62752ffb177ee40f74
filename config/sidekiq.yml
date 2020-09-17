@@ -1,0 +1,9 @@
+:dynamic: true
+:queues: 
+  - 'default'
+:schedule:
+  ScheduleTvShowNotificationWorker:
+    #Schecule every day at 12 am
+    cron: '0 0 * * *' 
+    queue: default
+    description: "this will schedule job for every show to send notifications"
